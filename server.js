@@ -11,9 +11,8 @@ const port = process.env.PORT || 3000;
 const server = express();
 connectToDB("currency-converter");
 
+// Middleware: Headers for CORS
 server.use(cors());
-
-// Add headers for CORS
 server.use((_req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -23,12 +22,11 @@ server.use((_req, res, next) => {
   next();
 });
 
-// parse application/x-www-form-urlencoded
+// Middleware: Body parser
 server.use(urlencoded({ extended: false }));
-
-// parse application/json
 server.use(json());
 
+// Middleware: Routes
 server.use("/api", conversionController);
 
 server.listen(port, () => {
