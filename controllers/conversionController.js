@@ -22,7 +22,7 @@ router.post("/create", async (req, res) => {
     newConversion
       .save()
       .then(() => {
-        res.send("Data saved succesfully");
+        res.json({ message: "Conversion saved successfully" });
       })
       .catch((err) => res.status(400).json("Error: " + err));
   } catch (error) {
@@ -34,6 +34,15 @@ router.get("/history", async (_req, res) => {
   try {
     const conversions = await Conversion.find();
     res.json(conversions);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+router.delete("/delete-history", async (_req, res) => {
+  try {
+    await Conversion.deleteMany({});
+    res.json({ message: "Conversion history deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
