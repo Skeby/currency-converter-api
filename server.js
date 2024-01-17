@@ -5,15 +5,18 @@ import cors from "cors";
 import connectToDB from "./db.js";
 import conversionController from "./controllers/conversionController.js";
 
+// Load content of .env file into process.env
 dotenv.config();
-const { urlencoded, json } = bodyParser;
-const port = process.env.PORT || 3000;
-const server = express();
 connectToDB("currency-converter");
 
-// Middleware: Headers for CORS
+const { urlencoded, json } = bodyParser;
+const server = express();
+const port = process.env.PORT || 3000;
+
+// Middleware: CORS
 server.use(cors());
 server.use((_req, res, next) => {
+  // Define headers
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",

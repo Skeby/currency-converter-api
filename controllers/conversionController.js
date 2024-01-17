@@ -12,6 +12,7 @@ router.post("/create", async (req, res) => {
       targetAmount,
       dateTime,
     } = req.body;
+    // Create a new Conversion object
     const newConversion = new Conversion({
       sourceCurrency,
       targetCurrency,
@@ -19,6 +20,7 @@ router.post("/create", async (req, res) => {
       targetAmount,
       dateTime,
     });
+    // Insert new conversion in the conversion collection (table)
     newConversion
       .save()
       .then(() => {
@@ -32,6 +34,7 @@ router.post("/create", async (req, res) => {
 
 router.get("/history", async (_req, res) => {
   try {
+    // Get all Conversions in the database
     const conversions = await Conversion.find();
     res.json(conversions);
   } catch (error) {
@@ -41,6 +44,7 @@ router.get("/history", async (_req, res) => {
 
 router.delete("/delete-history", async (_req, res) => {
   try {
+    // Delete all entries in the conversion collection
     await Conversion.deleteMany({});
     res.json({ message: "Conversion history deleted successfully" });
   } catch (error) {
