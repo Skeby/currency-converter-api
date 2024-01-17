@@ -19,7 +19,7 @@ router.post("/conversions/create", async (req, res) => {
   }
 });
 
-router.get("/conversions", async (_req, res) => {
+router.get("/conversions", async (_, res) => {
   try {
     // Get all Conversions in the database
     const conversions = await Conversion.find();
@@ -29,7 +29,7 @@ router.get("/conversions", async (_req, res) => {
   }
 });
 
-router.delete("/conversions", async (_req, res) => {
+router.delete("/conversions", async (_, res) => {
   try {
     // Delete all entries in the conversion collection
     await Conversion.deleteMany({});
