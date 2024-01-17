@@ -3,7 +3,7 @@ import Conversion from "../models/Conversion.js";
 
 const router = Router();
 
-router.post("/create", async (req, res) => {
+router.post("/conversions/create", async (req, res) => {
   try {
     // Create a new Conversion object
     const newConversion = new Conversion(req.body);
@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.get("/history", async (_req, res) => {
+router.get("/conversions", async (_req, res) => {
   try {
     // Get all Conversions in the database
     const conversions = await Conversion.find();
@@ -29,7 +29,7 @@ router.get("/history", async (_req, res) => {
   }
 });
 
-router.delete("/delete-history", async (_req, res) => {
+router.delete("/conversions", async (_req, res) => {
   try {
     // Delete all entries in the conversion collection
     await Conversion.deleteMany({});
