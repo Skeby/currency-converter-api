@@ -5,21 +5,8 @@ const router = Router();
 
 router.post("/create", async (req, res) => {
   try {
-    const {
-      sourceCurrency,
-      targetCurrency,
-      sourceAmount,
-      targetAmount,
-      dateTime,
-    } = req.body;
     // Create a new Conversion object
-    const newConversion = new Conversion({
-      sourceCurrency,
-      targetCurrency,
-      sourceAmount,
-      targetAmount,
-      dateTime,
-    });
+    const newConversion = new Conversion(req.body);
     // Insert new conversion in the conversion collection (table)
     newConversion
       .save()

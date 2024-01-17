@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import connectToDB from "./db.js";
+import connectToDB from "./database.js";
 import conversionController from "./controllers/conversionController.js";
 
 // Load content of .env file into process.env
