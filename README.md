@@ -23,10 +23,6 @@ PORT=<PORT_NUMBER>
 
 In the project directory, run:
 
-### `node server.js`
+### `npm start`
 
-Runs the server using node
-
-### `npx nodemon`
-
-Starts nodemon and monitors project files for changes
+Runs the server using the default script
