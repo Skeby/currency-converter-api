@@ -15,7 +15,11 @@ router.post("/conversions/create", async (req, res) => {
       })
       .catch((err) => res.status(400).json("Error: " + err));
   } catch (err) {
-    res.status(500).json({ error: `Internal server error:\n${err}` });
+    res
+      .status(500)
+      .json({
+        error: `Internal server error:\n${err.message ? err.message : err}`,
+      });
   }
 });
 
@@ -25,7 +29,11 @@ router.get("/conversions", async (_, res) => {
     const conversions = await Conversion.find();
     res.json(conversions);
   } catch (err) {
-    res.status(500).json({ error: `Internal server error:\n${err}` });
+    res
+      .status(500)
+      .json({
+        error: `Internal server error:\n${err.message ? err.message : err}`,
+      });
   }
 });
 
@@ -35,7 +43,11 @@ router.delete("/conversions", async (_, res) => {
     await Conversion.deleteMany({});
     res.json({ message: "Conversion history deleted successfully" });
   } catch (err) {
-    res.status(500).json({ error: `Internal server error:\n${err}` });
+    res
+      .status(500)
+      .json({
+        error: `Internal server error:\n${err.message ? err.message : err}`,
+      });
   }
 });
 
