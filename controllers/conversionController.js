@@ -15,7 +15,7 @@ router.post("/conversions/create", async (req, res) => {
       })
       .catch((err) => res.status(400).json("Error: " + err));
   } catch (error) {
-    console.error("An error occured", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
