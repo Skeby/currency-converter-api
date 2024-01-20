@@ -7,9 +7,9 @@ dotenv.config();
 const { connect, connection } = mongoose;
 const DB_BASE_URI = process.env.DB_BASE_URI || "mongodb://127.0.0.1:27017";
 
-const connectToDB = (collectionName) => {
+const connectToDB = (databaseName) => {
   // Connect the specified collection (table) in the database
-  connect(DB_BASE_URI + "/" + collectionName);
+  connect(DB_BASE_URI + "/" + databaseName);
   connection.on("connected", () => {
     console.log("Database connected succesfully");
   });
