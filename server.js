@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 
 // Middleware: CORS
 server.use(cors());
-server.use((_req, res, next) => {
+server.use((_, res, next) => {
   // Define headers
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -30,6 +30,10 @@ server.use(urlencoded({ extended: false }));
 server.use(json());
 
 // Middleware: Routes
+server.get("/", (_, res) => {
+  res.send("Hello world!");
+});
+
 server.use("/api", conversionController);
 
 server.listen(port, () => {
