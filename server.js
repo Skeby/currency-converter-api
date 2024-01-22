@@ -31,7 +31,7 @@ server.use(json());
 
 // Middleware: Routes
 server.get("/", (_, res) => {
-  res.send("Hello world!");
+  res.send("Home route of currency converter backend. Try /api/conversions");
 });
 
 server.use("/api", conversionController);
