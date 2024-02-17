@@ -5,7 +5,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const { connect, connection } = mongoose;
-const DB_BASE_URI = process.env.DB_BASE_URI || "mongodb://127.0.0.1:27017";
+const DB_BASE_URI =
+  process.env.NODE_ENV === "development"
+    ? "mongodb://127.0.0.1:27017"
+    : process.env.DB_BASE_URI;
 
 const connectToDB = (databaseName) => {
   // Connect to the specified database
