@@ -36,6 +36,10 @@ server.get("/", (_, res) => {
 
 server.use("/api", conversionController);
 
+server.get("*", (_, res) => {
+  res.redirect("/");
+});
+
 server.listen(port, () => {
   console.log(
     `Server is listening on port ${port} => http://localhost:${port}`
